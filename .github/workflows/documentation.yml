@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  PR_URL: ${{ github.event.pull_request.html_url }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +29,4 @@ jobs:
       - name: Run Documentation Generation
         run: npm run generate-docs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_TITLE: ${{ $(gh pr view $PR_URL --json title | jq -r ".title") }}
