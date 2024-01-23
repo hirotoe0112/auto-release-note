@@ -28,6 +28,8 @@ jobs:
 
       - name: Run Documentation Generation
         run: |
+          test=$(gh pr view)
+          echo $test
           title=$(gh pr view $PR_URL --json title | jq -r ".title")
           echo "PR_TITLE=$title" >> $GITHUB_ENV
           npm run generate-docs
