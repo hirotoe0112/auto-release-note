@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Documentation Generation
         run: |
-          echo $PR_URL
+          echo ${{ github.event.pull_request.html_url }}
