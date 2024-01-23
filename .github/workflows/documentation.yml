@@ -28,6 +28,7 @@ jobs:
 
       - name: Run Documentation Generation
         run: |
+          echo $PR_URL
           test=$(gh pr view $PR_URL)
           echo $test
           title=$(gh pr view $PR_URL --json title | jq -r ".title")
