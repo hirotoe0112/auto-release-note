@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Documentation Generation
         run: |
-          test=$(gh pr view)
+          test=$(gh pr view $PR_URL)
           echo $test
           title=$(gh pr view $PR_URL --json title | jq -r ".title")
           echo "PR_TITLE=$title" >> $GITHUB_ENV
