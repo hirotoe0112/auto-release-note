@@ -10,7 +10,7 @@ const prTitle = eventData.pull_request.title;
 const prBody = eventData.pull_request.body;
 
 // ここで取得した情報を利用してドキュメントを生成するなどの処理を行う
-const completion = await openai.chat.completions.create({
+const completion = await OpenAiSource.chat.completions.create({
   messages: [
     { "role": "system", "content": "プルリクエストのタイトルおよび本文から、エンドユーザー向けに最適化されたリリースノートを生成してください。技術的な表現や開発者向けの内容が含まれる場合がありますが、エンドユーザーが読んでもわかりやすい文章にしてください。" },
     { "role": "user", "content": `プルリクエストのタイトルは「${prTitle}、本文は「${prBody}」です。` },
