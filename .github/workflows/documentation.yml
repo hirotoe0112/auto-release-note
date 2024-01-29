@@ -5,12 +5,6 @@ on:
     types:
       - closed
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,3 +26,8 @@ jobs:
           if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
             npm run generate-docs
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
