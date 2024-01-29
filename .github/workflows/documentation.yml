@@ -8,6 +8,8 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
 jobs:
   build:
