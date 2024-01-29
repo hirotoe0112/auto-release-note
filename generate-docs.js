@@ -27,16 +27,17 @@ console.log(completion.choices[0]);
 // Notionデータベースに登録
 await NotionClient.pages.create({
   parent: {
+    type: "database_id",
     database_id: NotionDatabaseId
   },
   properties: {
-    // These properties represent columns in the database (i.e. its schema)
-    "changes": {
+    changes: {
       type: "title",
       title: [
         {
-          type: "text",
-          text: { content: completion.choices[0].message.content },
+          text: {
+            content: completion.choices[0].message.content
+          },
         }
       ],
     },
