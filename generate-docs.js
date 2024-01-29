@@ -13,10 +13,10 @@ const completion = await OpenAiSource.chat.completions.create({
   messages: [
     {
       "role": "system", "content": `
-プルリクエストのタイトルおよび本文を元にして、簡単に内容をまとめてください。
+タイトルおよび本文を元にして、今回変更された内容について簡単にまとめてください。
 まとめる際にはITについて詳しくないエンドユーザーでもわかりやすいように、技術的な表現や開発者向けの内容をできるだけ含まないようにしてください。
 複数の文章になった場合、改行を含まないでください。` },
-    { "role": "user", "content": `プルリクエストのタイトルは「${prTitle}、本文は「${prBody}」です。` },
+    { "role": "user", "content": `タイトルは「${prTitle}、本文は「${prBody}」です。` },
   ],
   model: "gpt-3.5-turbo-1106",
   max_tokens: 300,
